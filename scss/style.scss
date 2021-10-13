@@ -16,7 +16,7 @@ body {
     .cal-container {
         max-width: 61.07vw;
         min-width: 465px;
-        background-color: #FEDFE1;
+        background-color: #2EA9DF;
         border: 4px;
         border-style:outset;
         border-radius: 15px;
@@ -28,8 +28,8 @@ body {
         // 包住所有東西的大框
         h1 {
             width: 60%;
-            color: #91989F;
-            background-color: #eea2b1;
+            color: #333;
+            background-color: #7DB9DE;
             border: 4px;
             border-style: outset;
             border-radius: 15px;
@@ -56,7 +56,7 @@ body {
         }
         
         h1:hover {
-            color: #333;            
+            color: #ffffff;            
             cursor: pointer; 
             
             &::before {

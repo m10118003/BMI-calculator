@@ -28,7 +28,7 @@
 				<button class="startCal">Calculate</button>
 				<button class="reset">Reset</button>
 			</div>
-			<input type='submit' value="計算" class="calcualteBMI"></div>
+			<!-- <input type='submit' value="計算" class="calculateBMI"></div> -->
 			<div class="result-area">
 				<p class="result-title">Surprise! 跟你說你的BMI是...</p>
 				<p class="resultText"></p>
@@ -41,74 +41,70 @@
 			let result = document.querySelector('.result');
 			result.style.display = "none";
 			// 事件點擊按鈕
-			let startCal = document.querySelector('.calcualteBMI');
+			let startCal = document.querySelector('.startCal');
 			let reset = document.querySelector('.reset');
 			const input = document.querySelectorAll('input');
 
 			function bmi(weight, height) {
 				let w = parseInt(weight);
 				let h = (parseInt(height) / 100);
-				let bmi = (w / (h * h)) **2;
+				let bmi = (w / (h * h)).toFixed(2);
 				return bmi;
 			}
 
-			function calcualteBMI(e) {
-				console.log(e);
+			function calculateBMI() {
 				let height = document.querySelector('.height').value;
 				// 身高值	
 				let weight = document.querySelector('.weight').value;
 				// 體重值
-				let resultText = document.querySelector('.resultText')
+				let resultText = document.querySelector('.resultText');
 				// 計算 BMI
-				let result = document.querySelector('.result')
+				let result = document.querySelector('.result');
 				// 印出 BMI
-			}	
-			
-			// 印出值
-			// let BMI = (weight.value / (height.value ** 2));
-			if ((weight != "") && (height != "")) {
-				//畫面顯示標準
-				result.style.display = "block";
-				// 結果
-				resultText.innerHTML = bmi(weight, height);
-				//BMI 計算結果標準
-				result.innerHTML = checkBMI(bmi(weight, height));
-			} else {
-				result.style.display = "none";
-				alert("Do not touch this! 請輸入看起來像是數字的身高體重~")
+				// 印出值
+				// let BMI = (weight.value / (height.value ** 2));
+				if ((weight != "") && (height != "")) {
+					//畫面顯示標準
+					result.style.display = "block";
+					// 結果
+					resultText.innerHTML = bmi(weight, height);
+					//BMI 計算結果標準
+					result.innerHTML = checkBMI(bmi(weight, height));
+				} else {
+					result.style.display = "none";
+					alert("Do not touch this! 請輸入看起來像是數字的身高體重~")
+				}
 				
 			}
 
 			function checkBMI(BMI) {
 				if (35 <= BMI) {
-					console.log('重度肥胖');
-				} else if (30 <= BMI && BMI < 35) {
-					console.log('中度肥胖');
-				} else if (27 <= BMI && BMI < 30) {
-					console.log('輕度肥胖');
-				} else if (24 <= BMI && BMI < 27) {
-					console.log('過重');
-				} else if (18.5 <= BMI && BMI < 24) {
-					console.log('正常範圍');
+					return ('重度肥胖');
+				} else if (30 <= BMI) {
+					return ('中度肥胖');
+				} else if (27 <= BMI) {
+					return ('輕度肥胖');
+				} else if (24 <= BMI) {
+					return ('過重');
+				} else if (18.5 <= BMI) {
+					return ('正常範圍');
 				} else if (BMI < 18.5) {
-					console.log('體重過輕');
+					return ('體重過輕');
 				}
 			}
 			// 清空數值
-			function undo(e) {
+			function undo() {
 				document.querySelector('.weight').value = '';
 				document.querySelector('.height').value = '';
-				bmiText.style.display = "none";
-				resultText.innerHTML = 0;
-				return
+				result.innerHTML = "";	
+				resultText.innerHTML = "";	
 			}
 			// 事件監聽  
-			startCal.addEventListener('click', calcualteBMI);
+			startCal.addEventListener('click', calculateBMI);
 			// 事件監聽
 			reset.addEventListener('click', undo);
 		</script>
 	</section>
-
 </body>
 
 </html>
