@@ -43,7 +43,9 @@
 			// 事件點擊按鈕
 			let startCal = document.querySelector('.startCal');
 			let reset = document.querySelector('.reset');
-			const input = document.querySelectorAll('input');
+			let input = document.querySelectorAll('input');	
+			let resultArea = document.querySelector('.result-area');	
+				// 浮現視窗	
 
 			function bmi(weight, height) {
 				let w = parseInt(weight);
@@ -52,18 +54,21 @@
 				return bmi;
 			}
 
-			function calculateBMI() {
+			function calculateBMI() {				
 				let height = document.querySelector('.height').value;
 				// 身高值	
 				let weight = document.querySelector('.weight').value;
 				// 體重值
+				resultArea.classList.add('show');	
+				// 浮現視窗
 				let resultText = document.querySelector('.resultText');
 				// 計算 BMI
 				let result = document.querySelector('.result');
 				// 印出 BMI
+
 				// 印出值
 				// let BMI = (weight.value / (height.value ** 2));
-				if ((weight != "") && (height != "")) {
+				if((weight != "") && (height != "")) {
 					//畫面顯示標準
 					result.style.display = "block";
 					// 結果
@@ -71,33 +76,40 @@
 					//BMI 計算結果標準
 					result.innerHTML = checkBMI(bmi(weight, height));
 				} else {
-					result.style.display = "none";
+					resultArea.classList.remove('show');
 					alert("Do not touch this! 請輸入看起來像是數字的身高體重~")
+
 				}
-				
 			}
 
 			function checkBMI(BMI) {
 				if (35 <= BMI) {
-					return ('重度肥胖');
+					return ('重度肥胖 ' + "<br>" + "<br>" + '健康不會謀殺你, 但糖尿病, 高血壓會 !!!');
 				} else if (30 <= BMI) {
-					return ('中度肥胖');
+					return ('中度肥胖' + "<br>" + "<br>" + 'Do 運動 or do not ! 願原力指引你的體重 !!');
 				} else if (27 <= BMI) {
-					return ('輕度肥胖');
+					return ('輕度肥胖' + "<br>" + "<br>" + '現在! 立刻! 跑起來! Do it ! Just !! Do it !!!');
 				} else if (24 <= BMI) {
-					return ('過重');
+					return ('過重' + "<br>" + "<br>" + '變胖真是太無情啦, 史丹利 !! (誰 ?)');
 				} else if (18.5 <= BMI) {
-					return ('正常範圍');
+					return ('正常範圍' + "<br>" + "<br>" + '汝心汝行澄如明鏡，所作所為皆為健康 !!');
 				} else if (BMI < 18.5) {
-					return ('體重過輕');
-				}
+					return ('體重過輕' + "<br>" + "<br>" + '哇! 太瘦了吧！ 沒事多吃多健康 !!!');
+					
+				} else if (isNaN(parseInt(height)) || isNaN(parseInt(weight))) {
+					//空值，非數字(中文, 英文, 特殊符號)，空白					
+					alert("Do not touch this! 請輸入看起來像是數字的身高體重~")										
+				} else if(height < 0 || weight < 0) {
+					// 負值
+					alert("你不當人了嗎! Dio!")					
+				} 
 			}
 			// 清空數值
-			function undo() {
+			function undo() {				
 				document.querySelector('.weight').value = '';
 				document.querySelector('.height').value = '';
-				result.innerHTML = "";	
-				resultText.innerHTML = "";	
+				resultArea.classList.remove('show') ='';
+				result.querySelector('.result')='';								
 			}
 			// 事件監聽  
 			startCal.addEventListener('click', calculateBMI);

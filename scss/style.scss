@@ -3,17 +3,17 @@
 }
 
 body {
-    font-family: 'Microsoft JhengHei',微軟正黑體;  
+    font-family: "Microsoft JhengHei",微軟正黑體;  
     margin: 0;
     padding: 0;    
 }
 
 #primary-area {    
     display: flex;
-    justify-content: center;
+    justify-content: center;    
     margin: 5%;
 
-    .cal-container {
+    .cal-container {        
         max-width: 61.07vw;
         min-width: 465px;
         background-color: #2EA9DF;
@@ -33,22 +33,24 @@ body {
             border: 4px;
             border-style: outset;
             border-radius: 15px;
-            font-size: 300%;    
+            font-size: 250%;    
             text-shadow: 0.04em 0.01em rgb(77, 77, 77);
             text-align: center;
-            margin: 45px auto; 
+            margin: 25px auto; 
             padding: 10px;  
         }
         
         h2 {
-            font-size: 180%;
+            font-size: 175%;
             text-shadow: 0.04em 0.01em #333;
             transition: 0.3s; 
             padding: 0 10px;   
         }
         
         input {
-            height: 35px;
+            height: 55px;
+            color: #ffffffea;
+            background-color: #91989f;
         }
         
         text {
@@ -56,7 +58,7 @@ body {
         }
         
         h1:hover {
-            color: #ffffff;            
+            color: #ffffffea;            
             cursor: pointer; 
             
             &::before {
@@ -65,7 +67,7 @@ body {
         }   
                
         h1::before {
-            content: '';
+            content: "";
             width: 100%;
             height: 5px;
             display: block;
@@ -117,13 +119,16 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 25px;             
+            margin-top: 25px;   
+
+            h2:nth-child(3) {
+                margin: 0 5px;
+            }
 
             .weight {
                 width: 36%; 
                 font-size: 35px; 
                 text-align: center;
-                padding-right: 10px;
             }
         }
         
@@ -138,7 +143,7 @@ body {
             .startCal {
                 width: 35%;
                 height: 70px;
-                background-color:#91989F;               
+                background-color:#91989f;               
                 border: 4px;
                 border-style:outset;
                 border-radius: 15px;
@@ -158,7 +163,7 @@ body {
             }
 
             button:hover {
-                color: #ffffff;
+                color: #ffffffea;
                 background-color:#80868d;
                 cursor: pointer;
                 transition-duration: 0.3s;
@@ -173,26 +178,46 @@ body {
             }  
         }
         
-        .result-area {            
-            width: 80vh;
-            height: 16vw;
+        .result-area {  
             background-color: #91989F;
             border: 4px solid #ffffff;
             border-style:outset;
             border-radius: 15px;
-            transition-duration: 0.08s;
-            animation: fadein 6s ease;
+            line-height: 1em;  
+            opacity: 0;
 
-            >p {
-                width: 100%;
-                
+            >p {                
+                width: 100%; 
+                font-size: 120%;
+                text-shadow: 0.05em 0.01em #333; 
+                transition: 0.5s;  
+                transition-duration: 1s;                
+                margin-left: 45px;                
             }
+
+            >p:hover {
+                width: 100%;
+                color: #ffffffea; 
+                text-shadow: 0.05em 0.01em #ffffffea;  
+                transition: 0.5s;                  
+                transition-duration: 1s;
+            }  
         }
+
+        .result-area.show {           
+            width: 80vh; 
+            height: 20vw; 
+            opacity: 1;   
+            transition: 0.5s;
+            transition-duration: 1s;
+            margin-top: 5px;  
+        }          
+      
     }
 }
 
-@keyframes fadein {
-    0% {opacity: 0.5;}
-    50% {opacity: 2;}
-    100% {opacity: 2.5;}
-  }
+// @keyframes fadein {
+//     0% {opacity: 0.5;}
+//     50% {opacity: 2;}
+//     100% {opacity: 2.5;}
+//   }
